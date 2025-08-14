@@ -19,14 +19,14 @@ def process_file(input_file, output_file):
         with open(output_file, 'w', encoding='utf-8') as outfile:
             outfile.write(processed_content)
 
-        print(f"\n✅ Processed content written to '{output_file}' successfully.")
+        print(f"\n Processed content written to '{output_file}' successfully.")
 
     except FileNotFoundError:
-        print(f"❌ Error: The file '{input_file}' does not exist.")
+        print(f" Error: The file '{input_file}' does not exist.")
     except PermissionError:
-        print("❌ Error: You do not have permission to read/write this file.")
+        print(" Error: You do not have permission to read/write this file.")
     except Exception as e:
-        print(f"❌ Unexpected error: {e}")
+        print(f" Unexpected error: {e}")
 
 def count_word_frequency(file_path):
     """
@@ -50,9 +50,9 @@ def count_word_frequency(file_path):
             print(f"{word}: {count}")
 
     except FileNotFoundError:
-        print(f"❌ Error: The file '{file_path}' does not exist.")
+        print(f" Error: The file '{file_path}' does not exist.")
     except Exception as e:
-        print(f"❌ Unexpected error while counting words: {e}")
+        print(f" Unexpected error while counting words: {e}")
 
 
 if __name__ == "__main__":
