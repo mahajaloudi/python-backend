@@ -1,4 +1,3 @@
-
 import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -6,7 +5,7 @@ from email.mime.text import MIMEText
 
 
 API_KEY = "your_api_key_here"  
-CITY = "Amman"  
+CITY = "Amman" 
 URL = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
 response = requests.get(URL)
@@ -14,33 +13,33 @@ response = requests.get(URL)
 if response.status_code == 200:
     data = response.json()
 
-    
+  
     city = data["name"]
     temp = data["main"]["temp"]
     weather = data["weather"][0]["description"]
 
-   
+    
     report = f"""
-    تقرير الطقس لليوم:
+    Weather Report:
     ---------------------
-    المدينة: {city}
-    درجة الحرارة: {temp}°C
-    الحالة الجوية: {weather}
+    City: {city}
+    Temperature: {temp}°C
+    Condition: {weather}
     """
 else:
-    report = "حدث خطأ أثناء جلب بيانات الطقس!"
+    report = "Error: Could not fetch weather data!"
 
 print(report)
 
 
 sender_email = "your_email@gmail.com"       
 receiver_email = "receiver_email@gmail.com" 
-password = "your_email_password_or_app_key" 
+password = "your_app_password_here"         
 
 msg = MIMEMultipart()
 msg["From"] = sender_email
 msg["To"] = receiver_email
-msg["Subject"] = "تقرير الطقس اليومي"
+msg["Subject"] = "Daily Weather Report"
 
 
 msg.attach(MIMEText(report, "plain"))
@@ -52,6 +51,7 @@ try:
     server.login(sender_email, password)
     server.send_message(msg)
     server.quit()
-    print("تم إرسال البريد الإلكتروني بنجاح ✅")
+    print("✅ Email sent successfully!")
 except Exception as e:
-    print("فشل في إرسال البريد:", e)
+    print("❌ Failed to send email:", e)
+
