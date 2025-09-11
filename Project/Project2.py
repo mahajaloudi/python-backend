@@ -117,10 +117,7 @@ def get_all_products():
 def main():
     print("=== Simple E-commerce Store Backend ===\n")
 
-    # Add sample products (run once)
-    # add_product_to_db("Laptop", 1200, 5)
-    # add_product_to_db("Book", 20, 50)
-    # add_product_to_db("Headphones", 150, 10)
+
 
     user_name = input("Enter your name: ")
     user_email = input("Enter your email: ")
